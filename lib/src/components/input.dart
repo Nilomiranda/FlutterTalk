@@ -14,12 +14,11 @@ class Input extends StatelessWidget {
   Widget build(BuildContext context) {
     return (Container(
       child: TextFormField(
-          decoration: InputDecoration(hintText: this.placeholder),
-          obscureText:
-              this.type == TextInputType.visiblePassword ? true : false,
-          keyboardType: this.type,
-          validator: this.validator,
-          ),
+        decoration: InputDecoration(hintText: this.placeholder),
+        obscureText: this.type == TextInputType.visiblePassword ? true : false,
+        keyboardType: this.type,
+        validator: this.validator,
+      ),
       margin: EdgeInsets.only(bottom: 20.0),
     ));
   }

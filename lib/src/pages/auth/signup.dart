@@ -24,21 +24,30 @@ class SignUpPage extends StatelessWidget {
   }
 
   handleSubmit(context) {
-      if (_formKey.currentState.validate()) {
-        Navigator.pop(context);
-      } else {
-        return null;
-      }
+    if (_formKey.currentState.validate()) {
+      Navigator.pop(context);
+    } else {
+      return null;
     }
+  }
 
   @override
   Widget build(BuildContext context) {
-    final emailInput =
-        Input(placeholder: 'Email', type: TextInputType.emailAddress, validator: (value) => validateRequiredField(value, 'Email is required'),);
-    final passwordInput =
-        Input(placeholder: 'Password', type: TextInputType.visiblePassword, validator: (value) => validateRequiredField(value, 'Password is required'));
+    final emailInput = Input(
+      placeholder: 'Email',
+      type: TextInputType.emailAddress,
+      validator: (value) => validateRequiredField(value, 'Email is required'),
+    );
+    final passwordInput = Input(
+        placeholder: 'Password',
+        type: TextInputType.visiblePassword,
+        validator: (value) =>
+            validateRequiredField(value, 'Password is required'));
     final confirmPasswordInput = Input(
-        placeholder: 'Confirm password', type: TextInputType.visiblePassword, validator: (value) => validateRequiredField(value, 'Passwords don\'t match'));
+        placeholder: 'Confirm password',
+        type: TextInputType.visiblePassword,
+        validator: (value) =>
+            validateRequiredField(value, 'Passwords don\'t match'));
     final submitButton = Button(
       label: 'Create account',
       appearance: ButtonAppearance.solid,
