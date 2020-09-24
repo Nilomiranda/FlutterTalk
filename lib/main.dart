@@ -41,9 +41,21 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(body: Center(child: 
-        Button(label: 'Press me', onPressed: returnTruthfullness, appearance: ButtonAppearance.solid,)
-      ,),)
+      home: Scaffold(
+      body: Center(child: Column(
+        children: [
+          Container(
+            width: MediaQuery.of(context).size.width * 0.70,
+            margin: EdgeInsets.only(bottom: 30.0),
+            child: Column(children: [
+              Button(label: 'Sign in', onPressed: returnTruthfullness, appearance: ButtonAppearance.solid,),
+              Button(label: 'Create account', onPressed: returnTruthfullness, appearance: ButtonAppearance.outline,)
+            ],),
+          )
+        ],
+        mainAxisAlignment: MainAxisAlignment.end,
+      ),),
+      )
     );
   }
 }
