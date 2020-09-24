@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:talk/src/components/button.dart';
+import 'package:talk/src/components/input.dart';
 
 class SignInPage extends StatelessWidget {
   @override
@@ -11,6 +12,17 @@ class SignInPage extends StatelessWidget {
           Column(children: [
             Container(
               child: Image(image: AssetImage('assets/images/login.png'),),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.70,
+              margin: EdgeInsets.only(bottom: 15.0),
+              child: Form(
+                child: Column(children: [
+                  Input(placeholder: 'Your email'),
+                  Input(placeholder: 'Your desired password'),
+                  Input(placeholder: 'Confirm your desired password'),
+                ],),
+              )
             ),
             Container (
               width: MediaQuery.of(context).size.width * 0.70,
