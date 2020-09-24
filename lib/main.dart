@@ -34,13 +34,16 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-
   bool returnTruthfullness() {
     return true;
   }
 
   @override
   Widget build(BuildContext context) {
-    return Center(child: Button(label: 'Press me', onPressed: this.returnTruthfullness,));
+    return MaterialApp(
+      home: Scaffold(body: Center(child: 
+        Button(label: 'Press me', onPressed: returnTruthfullness, appearance: ButtonAppearance.solid,)
+      ,),)
+    );
   }
 }
