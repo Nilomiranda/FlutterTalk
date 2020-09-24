@@ -73,7 +73,8 @@ class MyHomePage extends StatelessWidget {
               ),
             )
           ],
-          mainAxisAlignment: MainAxisAlignment.end,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisSize: MainAxisSize.max,
         ),
       ),
     ));
