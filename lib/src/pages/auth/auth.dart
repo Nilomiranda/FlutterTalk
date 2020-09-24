@@ -30,7 +30,7 @@ class AuthPage extends StatelessWidget {
               child: Column(
                 children: [
                   Button(
-                    label: 'Sign in',
+                    label: 'Log in',
                     onPressed: () => goToSignUpPage(context),
                     appearance: ButtonAppearance.solid,
                   ),
