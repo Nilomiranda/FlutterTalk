@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:talk/src/pages/auth.dart';
+import 'package:talk/src/pages/auth/auth.dart';
+import 'package:talk/src/pages/auth/signin.dart';
 
 void main() {
   runApp(MyApp());
@@ -36,6 +37,6 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return AuthPage();
+    return MaterialApp(home: AuthPage());
   }
 }

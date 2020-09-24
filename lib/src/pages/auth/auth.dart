@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:talk/src/components/button.dart';
-
+import 'package:talk/src/pages/auth/signin.dart';
 
 class AuthPage extends StatelessWidget {
-  bool returnTruthfullness() {
-    return true;
+  void goToSignUpPage(BuildContext context) {
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => SignInPage()));
   }
-  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -30,12 +31,12 @@ class AuthPage extends StatelessWidget {
                 children: [
                   Button(
                     label: 'Sign in',
-                    onPressed: returnTruthfullness,
+                    onPressed: () => goToSignUpPage(context),
                     appearance: ButtonAppearance.solid,
                   ),
                   Button(
                     label: 'Create account',
-                    onPressed: returnTruthfullness,
+                    onPressed: () => goToSignUpPage(context),
                     appearance: ButtonAppearance.outline,
                   )
                 ],
