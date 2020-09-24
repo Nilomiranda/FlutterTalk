@@ -1,15 +1,53 @@
-import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:talk/src/components/button.dart';
 import 'package:talk/src/components/input.dart';
+import 'package:talk/src/pages/auth/signup.dart';
 
 class SignInPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
 
+  String validateRequiredFields(String value, String errorMessage) {
+    if (value.isEmpty) {
+      return errorMessage;
+    }
+
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
+    void goToCreateAccountPage(context) {
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => SignUpPage()),
+      );
+    }
+
+    final emailInput = Input(
+        placeholder: 'Your email',
+        type: TextInputType.emailAddress,
+        validator: (value) =>
+            validateRequiredFields(value, 'Enter a valid email.'));
+    final passwordInput = Input(
+        placeholder: 'Your password',
+        type: TextInputType.visiblePassword,
+        validator: (value) =>
+            validateRequiredFields(value, 'Your password is missing'));
+
+    final forgotPasswordText = Container(
+      margin: EdgeInsets.only(top: 10),
+      child: Text('I forgot my password 😢'),
+    );
+
+    handleSubmit() {
+      if (_formKey.currentState.validate()) {
+        Navigator.pop(context);
+      } else {
+        return null;
+      }
+    }
+
     return (MaterialApp(
         home: Scaffold(
       resizeToAvoidBottomInset: true,
@@ -33,19 +71,8 @@ class SignInPage extends StatelessWidget {
                       key: _formKey,
                       child: Column(
                         children: [
-                          Input(
-                            placeholder: 'Your email',
-                            type: TextInputType.emailAddress,
-                            validator: (value) {
-                              if (value.isEmpty) {
-                                return 'Please, enter a valid email';
-                              }
-                              return null;
-                            },
-                          ),
-                          Input(
-                              placeholder: 'Your desired password',
-                              type: TextInputType.visiblePassword),
+                          emailInput,
+                          passwordInput,
                           Container(
                             width: MediaQuery.of(context).size.width * 0.70,
                             margin: EdgeInsets.only(top: 10.0),
@@ -53,29 +80,16 @@ class SignInPage extends StatelessWidget {
                               children: [
                                 Button(
                                   label: 'Sign in',
-                                  onPressed: () {
-                                    if (_formKey.currentState.validate()) {
-                                      Navigator.pop(context);
-                                    } else {
-                                      return AlertDialog(
-                                        title: Text('Validation error'),
-                                        content: Center(child: Text('You probably missed some fields, check again...'),)
-                                      );
-                                    }
-                                  },
+                                  onPressed: handleSubmit,
                                   appearance: ButtonAppearance.solid,
                                 ),
                                 Button(
                                   label: 'Create account',
-                                  onPressed: () => {true},
+                                  onPressed: () =>
+                                      goToCreateAccountPage(context),
                                   appearance: ButtonAppearance.outline,
                                 ),
-                                Container(
-                                  child: Text(
-                                    'I forgot my password 😢',
-                                  ),
-                                  margin: EdgeInsets.only(top: 10.0),
-                                )
+                                forgotPasswordText,
                               ],
                             ),
                           )
