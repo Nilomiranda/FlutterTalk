@@ -25,14 +25,14 @@ class Button extends StatelessWidget {
         width: double.infinity,
         child: FlatButton(
           child: Text(
-            this.label,
-            style: TextStyle(color: Colors.white),
-          ),
-          onPressed: this.onPressed,
-          color: primaryColor,
-          shape: new RoundedRectangleBorder(
-              borderRadius: new BorderRadius.circular(borderRadius)),
-          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
+                this.label,
+                style: TextStyle(color: Colors.white),
+              ),
+              onPressed: this.onPressed,
+              color: primaryColor,
+              shape: new RoundedRectangleBorder(
+                  borderRadius: new BorderRadius.circular(borderRadius)),
+              padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
         ),
       );
     } else {
