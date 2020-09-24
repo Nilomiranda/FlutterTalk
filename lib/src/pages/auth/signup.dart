@@ -8,7 +8,7 @@ import 'package:talk/src/pages/auth/signin.dart';
 class SignUpPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
 
-  void goToSignInPage(context) {
+  goToSignInPage(context) {
     Navigator.push(
         context,
         MaterialPageRoute(
