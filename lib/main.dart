@@ -41,21 +41,41 @@ class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-      body: Center(child: Column(
-        children: [
-          Container(
-            width: MediaQuery.of(context).size.width * 0.70,
-            margin: EdgeInsets.only(bottom: 30.0),
-            child: Column(children: [
-              Button(label: 'Sign in', onPressed: returnTruthfullness, appearance: ButtonAppearance.solid,),
-              Button(label: 'Create account', onPressed: returnTruthfullness, appearance: ButtonAppearance.outline,)
-            ],),
-          )
-        ],
-        mainAxisAlignment: MainAxisAlignment.end,
-      ),),
-      )
-    );
+        home: Scaffold(
+      body: Center(
+        child: Column(
+          children: [
+            Container(
+              child: Column(
+                children: [
+                  Image(
+                    image: AssetImage('assets/images/welcome.png'),
+                  )
+                ],
+              ),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width * 0.70,
+              margin: EdgeInsets.only(bottom: 30.0),
+              child: Column(
+                children: [
+                  Button(
+                    label: 'Sign in',
+                    onPressed: returnTruthfullness,
+                    appearance: ButtonAppearance.solid,
+                  ),
+                  Button(
+                    label: 'Create account',
+                    onPressed: returnTruthfullness,
+                    appearance: ButtonAppearance.outline,
+                  )
+                ],
+              ),
+            )
+          ],
+          mainAxisAlignment: MainAxisAlignment.end,
+        ),
+      ),
+    ));
   }
 }
