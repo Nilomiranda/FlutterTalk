@@ -1,6 +1,10 @@
+import 'dart:convert';
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:talk/src/components/button.dart';
 import 'package:talk/src/components/input.dart';
+import 'package:talk/src/config/http-client.dart';
 
 class SignUpPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
@@ -16,12 +20,15 @@ class SignUpPage extends StatelessWidget {
     return null;
   }
 
-  handleSubmit(context) {
-    if (_formKey.currentState.validate()) {
-      Navigator.pop(context);
-    } else {
-      return null;
-    }
+  handleSubmit(context) async {
+    // if (_formKey.currentState.validate()) {
+    //   Navigator.pop(context);
+    // } else {
+    //   return null;
+    // }
+    var api = API();
+    var res = await api.get('users/2');
+    print(json.decode(res));
   }
 
   @override
