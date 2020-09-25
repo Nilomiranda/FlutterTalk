@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:talk/src/pages/auth/auth.dart';
 import 'package:talk/src/pages/auth/signin.dart';
+import 'package:talk/src/pages/auth/signup.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,6 +38,12 @@ class MyApp extends StatelessWidget {
 class MyHomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(home: AuthPage());
+    return MaterialApp(
+      home: AuthPage(),
+      routes: <String, WidgetBuilder> {
+        '/sign-up': (BuildContext context) => SignUpPage(),
+        '/sign-in': (BuildContext contexxt) => SignInPage(),
+      },
+    );
   }
 }

@@ -9,11 +9,7 @@ class SignUpPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
 
   goToSignInPage(context) {
-    Navigator.push(
-        context,
-        MaterialPageRoute(
-          builder: (context) => SignInPage(),
-        ));
+    Navigator.pushNamed(context, '/sign-in');
   }
 
   String validateRequiredField(String value, String errorMessage) {

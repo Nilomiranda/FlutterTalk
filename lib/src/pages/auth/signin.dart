@@ -18,10 +18,7 @@ class SignInPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     void goToCreateAccountPage(context) {
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => SignUpPage()),
-      );
+      Navigator.pushNamed(context, '/sign-up');
     }
 
     final emailInput = Input(

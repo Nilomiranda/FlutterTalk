@@ -4,8 +4,7 @@ import 'package:talk/src/pages/auth/signin.dart';
 
 class AuthPage extends StatelessWidget {
   void goToSignUpPage(BuildContext context) {
-    Navigator.push(
-        context, MaterialPageRoute(builder: (context) => SignInPage()));
+    Navigator.pushNamed(context, '/sign-in');
   }
 
   @override
