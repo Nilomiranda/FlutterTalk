@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:talk/src/components/button.dart';
 import 'package:talk/src/components/input.dart';
-import 'package:talk/src/pages/auth/signup.dart';
 
 class SignInPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();

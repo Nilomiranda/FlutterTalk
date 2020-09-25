@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:talk/src/components/button.dart';
-import 'package:talk/src/pages/auth/signin.dart';
 
 class AuthPage extends StatelessWidget {
   void goToSignUpPage(BuildContext context) {
