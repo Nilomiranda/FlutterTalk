@@ -8,4 +8,9 @@ class API {
     var res = await http.get("https://reqres.in/api/$url");
     return res.body;
   }
+
+  Future<http.Response> post(url) async {
+    var res = await http.post("https://reqres.in/api/$url");
+    return res;
+  }
 }
