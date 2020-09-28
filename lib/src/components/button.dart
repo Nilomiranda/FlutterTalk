@@ -10,28 +10,22 @@ class Button extends StatelessWidget {
   final Function onPressed;
   final ButtonAppearance appearance;
   final bool fullWidth;
+  final bool loading;
 
   Button(
       {@required this.label,
       @required this.onPressed,
       this.appearance,
+      this.loading,
       this.fullWidth});
 
   @override
   Widget build(BuildContext context) {
-    // var buttonBase = (
-    //   onPressed: this.onPressed,
-    //   width: double.infinity,
-    //   color: primaryColor,
-    //   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 30),
-    //   shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(borderRadius)),
-    // );
-
     if (this.appearance == ButtonAppearance.solid) {
       return Container(
         width: double.infinity,
         child: FlatButton(
-          child: Text(
+          child: loading ? CircularProgressIndicator(value: null) : Text(
             this.label,
             style: TextStyle(color: Colors.white),
           ),

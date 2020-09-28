@@ -1,13 +1,14 @@
-import 'dart:convert';
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
+import 'package:talk/src/apis/auth.dart';
 import 'package:talk/src/components/button.dart';
 import 'package:talk/src/components/input.dart';
-import 'package:talk/src/config/http-client.dart';
 
 class SignUpPage extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
+  final api = AuthAPI();
+  final TextEditingController emailCtrl = TextEditingController();
+  final TextEditingController passwordCtrl = TextEditingController();
+  final TextEditingController confirmPasswordCtrl = TextEditingController();
 
   goToSignInPage(context) {
     Navigator.pushNamed(context, '/sign-in');
@@ -21,14 +22,19 @@ class SignUpPage extends StatelessWidget {
   }
 
   handleSubmit(context) async {
-    // if (_formKey.currentState.validate()) {
-    //   Navigator.pop(context);
-    // } else {
-    //   return null;
-    // }
-    var api = API();
-    var res = await api.get('users/2');
-    print(json.decode(res));
+    if (_formKey.currentState.validate()) {
+      createAccount();
+    } else {
+      return null;
+    }
+  }
+
+  Future createAccount() async {
+    print(emailCtrl.text);
+    final AccountCreationPayload payload = AccountCreationPayload(
+        email: emailCtrl.text, password: passwordCtrl.text);
+    final res = await this.api.createAccount(payload);
+    print(res);
   }
 
   @override
@@ -37,17 +43,22 @@ class SignUpPage extends StatelessWidget {
       placeholder: 'Email',
       type: TextInputType.emailAddress,
       validator: (value) => validateRequiredField(value, 'Email is required'),
+      controller: this.emailCtrl,
     );
     final passwordInput = Input(
-        placeholder: 'Password',
-        type: TextInputType.visiblePassword,
-        validator: (value) =>
-            validateRequiredField(value, 'Password is required'));
+      placeholder: 'Password',
+      type: TextInputType.visiblePassword,
+      validator: (value) =>
+          validateRequiredField(value, 'Password is required'),
+      controller: this.passwordCtrl,
+    );
     final confirmPasswordInput = Input(
-        placeholder: 'Confirm password',
-        type: TextInputType.visiblePassword,
-        validator: (value) =>
-            validateRequiredField(value, 'Passwords don\'t match'));
+      placeholder: 'Confirm password',
+      type: TextInputType.visiblePassword,
+      validator: (value) =>
+          validateRequiredField(value, 'Passwords don\'t match'),
+      controller: this.confirmPasswordCtrl,
+    );
     final submitButton = Button(
       label: 'Create account',
       appearance: ButtonAppearance.solid,
